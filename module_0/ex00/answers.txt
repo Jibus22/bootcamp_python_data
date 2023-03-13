@@ -1,0 +1,4 @@
+conda list
+conda search numpy -i
+conda remove numpy
+conda install numpy
