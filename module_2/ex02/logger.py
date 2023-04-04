@@ -20,9 +20,13 @@ def log(func):
         if user is None:
             user = ""
 
+        fn_name = func.__name__.split('_')
+        fn_name = [x.capitalize() for x in fn_name]
+        fn_name = " ".join(fn_name)
+
         with open('machine.log', 'a') as file:
             file.write(f"({user})Running:"\
-                       + f" {func.__name__}".ljust(20)\
+                       + f" {fn_name}".ljust(20)\
                   + f"[ exec-time = {elapsed:.3f} {unit} ]\n")
 
         return ret
