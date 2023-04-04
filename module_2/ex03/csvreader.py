@@ -33,18 +33,18 @@ class CsvReader():
             for y in x:
                 value = y.strip()
                 if value is "":
-                    raise Exception(f"Bad CSV formating: line {i+1}")
-                    # return None
+                    # raise Exception(f"Bad CSV formating: line {i+1}")
+                    return None
                 new_row.append(value)
             if len(new_row) is not self._col_nb:
-                raise Exception(f"Bad CSV formating: line {i+1}")
-                # return None
+                # raise Exception(f"Bad CSV formating: line {i+1}")
+                return None
             new_matrix.append(new_row)
 
         self._rows_nb = len(new_matrix)
         if self._rows_nb < self.skip_top or self._rows_nb < self.skip_bottom:
-            raise Exception(f"skip_[top/bottom] argument to high for the file")
-            # return None
+            # raise Exception(f"skip_[top/bottom] argument to high for the file")
+            return None
 
         self.data = new_matrix[self.skip_top:(self._rows_nb - self.skip_bottom)]
 

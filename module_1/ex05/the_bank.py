@@ -134,6 +134,9 @@ class Bank(object):
         if amount < 0 or origin_acc.value < amount:
             return False
 
+        if origin_acc.name == dest_acc.name:
+            return True
+
         dest_acc.transfer(amount)
         origin_acc.value -= amount
 

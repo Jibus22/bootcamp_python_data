@@ -11,6 +11,10 @@ def generator(text, sep=" ", option=None):
     if option != None and not isinstance(option, str):
         print("ERROR")
         return None
+    if not text.isprintable():
+        print("ERROR")
+        return None
+
     text_list = text.split(sep)
 
     if option == "unique":

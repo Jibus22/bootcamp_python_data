@@ -71,3 +71,10 @@ print()
 
 for word in generator(text, sep="simplement"):
     print(word)
+
+print()
+
+text = "Le Lorem?Ipsum est \x03 simplement du faux !texte. ah? ah /ah"
+for word in generator(text):
+    print(word)
+

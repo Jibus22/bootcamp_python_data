@@ -35,7 +35,7 @@ class Vector:
     ### 'private' methods ###
     def _is_same_shape(self, vec):
         if not isinstance(vec, Vector):
-            print("ERROR: only dot product with a vector")
+            print("ERROR: only operation with a vector")
             return 1
         if self.shape != vec.shape:
             print("ERROR: vector has different shape")
@@ -75,7 +75,7 @@ class Vector:
         return f"{str(self.values)}"
 
     def __mul__(self, other):
-        if type(other) != int:
+        if type(other) != int and type(other) != float:
             print("ERROR: only multiply with a scalar")
             return None
         flat_vec = [(y*other) for x in self.values for y in x]
@@ -108,7 +108,7 @@ class Vector:
 
     def __truediv__(self, other):
         if type(other) != int and type(other) != float:
-            print("ERROR: only multiply with a scalar")
+            print("ERROR: only divide with a scalar")
             return None
         if other == 0:
             print("ZeroDivisionError: division by zero.")
