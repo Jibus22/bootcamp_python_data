@@ -8,8 +8,7 @@ class Book:
             exit(1)
 
         self.name = name
-        self.last_update = datetime.datetime.now()
-        self.creation_date = datetime.datetime.now()
+        self.last_update = self.creation_date = datetime.datetime.now()
         self.recipes_list = {"starter" : [], "lunch" : [], "dessert" : []}
 
     def get_recipe_by_name(self, name):
@@ -23,9 +22,12 @@ class Book:
 
     def get_recipes_by_types(self, recipe_type):
         """Get all recipe names for a given recipe_type """
+        if not isinstance(recipe_type, str):
+            print("error: recipe_type must be a string")
+            return None
         if recipe_type != "starter" and recipe_type != "lunch"\
                 and recipe_type != "dessert":
-            print(f"'{recipe_type}' is not a good recipe type")
+            print(f"error: '{recipe_type}' is not a good recipe type")
             return None
         recipe_name_list = []
         for recipe in self.recipes_list[recipe_type]:

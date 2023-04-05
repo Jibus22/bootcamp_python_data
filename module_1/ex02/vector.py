@@ -1,36 +1,44 @@
 class Vector:
     ### constructor ###
     def __init__(self, arg):
+        self.shape = None
+        self.values = None
         if type(arg) == int:
+            if arg < 0:
+                print("ERROR: value can't be negative")
+                return None
             self.shape = (arg, 1)
             self.values = [[float(x)] for x in range(arg)]
 
         elif type(arg) == tuple:
             if len(arg) != 2:
                 print("ERROR: only 2 values accepted in tuple")
-                exit(1)
+                return None
             for x in arg:
                 if not isinstance(x, int):
                     print("ERROR: only int accepted in tuple")
-                    exit(1)
+                    return None
             if arg[0] >= arg[1]:
                 print("ERROR: arg[0] >= arg[1]")
-                exit(1)
+                return None
 
             self.shape = (arg[1] - arg[0], 1)
             self.values = [[float(x)] for x in range(arg[0], arg[1])]
 
         elif type(arg) == list:
-            if len(arg) == 1:
-                self.shape = (1, len(arg[0]))
+            if len(arg) == 0:
+                print("ERROR: empty vector")
+                return None
+            if isinstance(arg[0], list):
+                self.shape = (len(arg), 1)
                 self.values = arg
             else:
-                self.shape = (len(arg), 1)
+                self.shape = (1, len(arg))
                 self.values = arg
 
         else:
             print("ERROR: wrong data type given to Vector")
-            exit(1)
+            return None
 
     ### 'private' methods ###
     def _is_same_shape(self, vec):
@@ -117,5 +125,8 @@ class Vector:
         return self._structured_vec(flat_vec)
 
     def __rtruediv__(self, other):
+        if other is None:
+            print("Error, division of None by a vector is not defined.")
+            return None
         raise NotImplementedError("Division of a scalar by a "
                                   "Vector is not defined here.")
