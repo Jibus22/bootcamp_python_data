@@ -11,9 +11,8 @@ class TinyStatistician:
                       an empty list or array
         """
         xlen = len(x)
-        if xlen < 2:
+        if xlen == 0:
             return None
-
         return sum(val for val in x) / xlen
 
     def median(self, x):
@@ -23,7 +22,7 @@ class TinyStatistician:
                       an empty list or array
         """
         xlen = len(x)
-        if xlen < 2:
+        if xlen == 0:
             return None
 
         x.sort()
@@ -67,7 +66,7 @@ class TinyStatistician:
                       is an empty list or array.
         """
         xlen = len(x)
-        if xlen < 2:
+        if xlen == 0:
             return None
         x.sort()
         mean = self.mean(x)
@@ -76,11 +75,11 @@ class TinyStatistician:
     def std(self, x):
         """ computes the standard deviation of a given non-empty list or array x
             @x:       list(x) list to compute
-            @return   the variance as a float, otherwise None if x
+            @return   the standard deviation as a float, otherwise None if x
                       is an empty list or array.
         """
         xlen = len(x)
-        if xlen < 2:
+        if xlen == 0:
             return None
         x.sort()
         return sqrt(self.var(x))

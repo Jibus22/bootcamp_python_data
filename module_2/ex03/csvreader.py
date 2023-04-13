@@ -44,9 +44,9 @@ class CsvReader():
         self._rows_nb = len(new_matrix)
         if self._rows_nb < self.skip_top or self._rows_nb < self.skip_bottom:
             # raise Exception(f"skip_[top/bottom] argument to high for the file")
-            return None
-
-        self.data = new_matrix[self.skip_top:(self._rows_nb - self.skip_bottom)]
+            self.data = []
+        else:
+            self.data = new_matrix[self.skip_top:(self._rows_nb - self.skip_bottom)]
 
         return self
 

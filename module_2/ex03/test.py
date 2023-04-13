@@ -1,7 +1,7 @@
 from csvreader import CsvReader
 
 if __name__ == "__main__":
-    with CsvReader("bla.csv", header=True) as file:
+    with CsvReader("bla.csv", header=True, skip_bottom=1, skip_top=19) as file:
         if file == None:
             print("File is corrupted")
         else:

@@ -1,4 +1,5 @@
 from TinyStatistician import TinyStatistician
+import numpy as np
 
 tstat = TinyStatistician()
 a = [1, 42, 300, 10, 59]
@@ -27,3 +28,7 @@ print(f"STD" + 70 * '-')
 print(f"  {tstat.std(a)}")
 # Expected result: 110.81263465868862
 print(f"  {tstat.std(b)}")
+
+print(f"STD (numpy array)" + 62 * '-')
+print(f"  {tstat.std(np.array([1, 42, 300, 10, 59]))}")
+# Expected result: 110.81263465868862
